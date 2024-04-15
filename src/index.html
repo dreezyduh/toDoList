@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="profileSide">
+            <div class="logoContainer">
+                <div class="logo">TaskrDoo</div>
+                <div class="switchLightMode"></div>
+            </div>
+            <div class="doneContainer">Done</div>
+        </div>
+        <div class="projectsSide">
+            <div class="createTask">
+                <img src="" alt="add button icon" class="addIcon">
+                <button class="taskBtn">Add task</button>
+            </div>
+            <div class="projects"></div>
+            <dialog>
+                <fieldset>
+                    <legend>New task</legend>
+                    <form method="dialog">
+                        <label for="name">Name</label>
+                        <input type="text" id="name">
+                        <label for="description">Description</label>
+                        <input type="text" id="description">
+                        <label for="priority">Priority</label>
+                        <input type="number" id="priority" value="0">
+                        <label for="dueDate">Date due</label>
+                        <input type="date" id="date">
+                        <button class="dialogClose">Cancel</button>
+                        <button class="dialogContinue" type="button">Add</button>
+                    </form>
+                </fieldset>
+            </dialog>
+        </div>
+    </div>
+</body>
+</html>

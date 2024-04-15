@@ -1,0 +1,87 @@
+:root {
+    color-scheme: light dark;
+
+    --light-bg: #eee0cb;
+    --light-bg-list: #BAA898;
+    --light-highlight: #c2847a;
+    --light-addIcon: invert(5%) sepia(65%) saturate(7297%) hue-rotate(347deg) brightness(46%) contrast(103%);
+    --light-addIconHover: brightness(0) saturate(100%) invert(11%) sepia(41%) saturate(7006%) hue-rotate(345deg) brightness(66%) contrast(107%);
+
+    --dark-bg: #595959;
+    --dark-bg-list: #a5a5a5;
+    --dark-highlight: #cccccc;
+    --dark-addIcon: invert(100%) sepia(5%) saturate(685%) hue-rotate(207deg) brightness(116%) contrast(90%);
+    --dark-addIconHover: invert(93%) sepia(0%) saturate(0%) hue-rotate(357deg) brightness(89%) contrast(91%);
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 20vw 80vw;
+}
+
+.profileSide {
+    padding: 20px;
+    background-color: light-dark(var(--light-bg), var(--dark-bg));
+}
+
+.projectsSide {
+    padding: 20px;
+    background-color: light-dark(var(--light-bg-list), var(--dark-bg-list));
+}
+
+.createTask {
+    display: flex;
+    align-items: center;
+    width: max-content;
+}
+
+.createTask:hover {
+
+    .taskBtn {
+        color: light-dark(var(--light-highlight), var(--dark-highlight));
+    }
+    
+    .addIcon {
+        content: url('./images/plus-square.svg');
+        filter: light-dark(var(--light-addIconHover), var(--dark-addIconHover));
+    }
+}
+
+.taskBtn {
+    border: none;
+    background: none;
+    font-weight: 600;
+}
+
+.addIcon {
+    filter: light-dark(var(--light-addIcon), var(--dark-addIcon));
+}
+
+.task {
+    width: 60vw;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.task > div:nth-child(2) {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.task > img:last-child {
+    margin-left: auto;
+}
+
+.task img {
+    filter: light-dark(var(--light-addIcon),var(--dark-addIcon));
+}
+
+.task > img:last-child:hover {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(63%) saturate(7203%) hue-rotate(359deg) brightness(102%) contrast(125%);
+}
