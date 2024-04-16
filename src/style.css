@@ -1,17 +1,85 @@
 :root {
     color-scheme: light dark;
 
-    --light-bg: #eee0cb;
-    --light-bg-list: #BAA898;
+    --light-bg: #BAA898;
+    --light-bg-list: #eee0cb;
     --light-highlight: #c2847a;
     --light-addIcon: invert(5%) sepia(65%) saturate(7297%) hue-rotate(347deg) brightness(46%) contrast(103%);
-    --light-addIconHover: brightness(0) saturate(100%) invert(11%) sepia(41%) saturate(7006%) hue-rotate(345deg) brightness(66%) contrast(107%);
+    --light-addIconHover: brightness(0) saturate(100%) invert(85%) sepia(8%) saturate(5305%) hue-rotate(304deg) brightness(89%) contrast(67%);;
 
     --dark-bg: #595959;
     --dark-bg-list: #a5a5a5;
     --dark-highlight: #cccccc;
     --dark-addIcon: invert(100%) sepia(5%) saturate(685%) hue-rotate(207deg) brightness(116%) contrast(90%);
     --dark-addIconHover: invert(93%) sepia(0%) saturate(0%) hue-rotate(357deg) brightness(89%) contrast(91%);
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.dark {
+
+    .logoContainer > img {
+        content: url('./images/moon.svg');
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(2deg) brightness(103%) contrast(104%);
+    }
+
+    .addIcon {
+        filter: var(--dark-addIcon);
+    }
+
+    .createTask:hover {
+
+        .addIcon {
+            content: url('./images/plus-square.svg');
+            filter: var(--dark-addIconHover);
+        }
+    }
+
+    .task img {
+        filter: var(--dark-addIcon);
+    }
+    
+}
+
+.light {
+
+    .logoContainer > img {
+        content: url('./images/sun.svg');
+    }
+
+    .addIcon {
+        filter: var(--light-addIcon);
+    }
+
+    .createTask:hover {
+
+        .addIcon {
+            content: url('./images/plus-square.svg');
+            filter: var(--light-addIconHover);
+        }
+    }
+
+    .task img {
+        filter: var(--light-addIcon)
+    }
+
+    dialog {
+        input {
+            background-color: var(--light-highlight);
+        }
+
+        input[type='radio'] {
+            accent-color: var(--light-highlight);
+        }
+    }
 }
 
 body {
@@ -21,17 +89,33 @@ body {
 .container {
     display: grid;
     height: 100vh;
-    grid-template-columns: 20vw 80vw;
+    grid-template-columns: minmax(max-content, 15vw) 85vw;
+}
+
+dialog {
+    color: light-dark(white, white);
+    background-color: light-dark(#280003, black);
+    margin: 0;
+    position: inherit;
+}
+
+.logoContainer {
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    gap: 20px;
 }
 
 .profileSide {
     padding: 20px;
     background-color: light-dark(var(--light-bg), var(--dark-bg));
+    z-index: 0;
 }
 
 .projectsSide {
     padding: 20px;
     background-color: light-dark(var(--light-bg-list), var(--dark-bg-list));
+    z-index: 1;
 }
 
 .createTask {
@@ -45,21 +129,12 @@ body {
     .taskBtn {
         color: light-dark(var(--light-highlight), var(--dark-highlight));
     }
-    
-    .addIcon {
-        content: url('./images/plus-square.svg');
-        filter: light-dark(var(--light-addIconHover), var(--dark-addIconHover));
-    }
 }
 
 .taskBtn {
     border: none;
     background: none;
     font-weight: 600;
-}
-
-.addIcon {
-    filter: light-dark(var(--light-addIcon), var(--dark-addIcon));
 }
 
 .task {
@@ -78,10 +153,32 @@ body {
     margin-left: auto;
 }
 
-.task img {
-    filter: light-dark(var(--light-addIcon),var(--dark-addIcon));
+.task > img:first-child:hover {
+    content: url('./images/check-square.svg');
 }
 
 .task > img:last-child:hover {
     filter: brightness(0) saturate(100%) invert(17%) sepia(63%) saturate(7203%) hue-rotate(359deg) brightness(102%) contrast(125%);
+}
+
+.checked {
+    position: relative;
+    font-style: italic;
+
+    img:first-child {
+        content: url('./images/check-square.svg');
+    }
+}
+
+.checked:after {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: light-dark(black, white);
+    content: "";
+    width: 95%;
 }

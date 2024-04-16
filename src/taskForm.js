@@ -37,8 +37,12 @@ class Task {
         newTask.setAttribute('class', 'task');
 
         taskRemove.addEventListener('click', function() {
-            projectsContainer.removeChild(newTask);
-        })
+            newTask.parentNode.removeChild(newTask);
+        });
+
+        taskCheck.addEventListener('click', function(e) {
+            completeTask.checkBtn(newTask);
+        });
         
         projectsContainer.appendChild(newTask);
         newTask.appendChild(taskCheck);
@@ -46,6 +50,16 @@ class Task {
         newTask.appendChild(taskDescription);
         newTask.appendChild(taskDue);
         newTask.appendChild(taskRemove);
+    }
+}
+
+class completeTask {
+    static checkBtn(taskParent) {
+        if (taskParent.getAttribute('class') === 'task checked') {
+            taskParent.setAttribute('class', 'task');
+            return
+        }
+        taskParent.setAttribute('class', 'task checked');
     }
 }
 
@@ -63,7 +77,7 @@ function submitForm() {
 }
 
 function displayForm() {
-    dialog.showModal();
+    dialog.show();
 }
 
 function cancelForm() {

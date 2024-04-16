@@ -1,20 +1,28 @@
 export {createLightModeBtn};
 
 const root = document.querySelector(':root');
-const lightMode = document.querySelector('.switchLightMode');
-const lightBtn = document.createElement('button');
+const logoContainer = document.querySelector('.logoContainer');
+const lightMode = document.createElement('img');
+
+logoContainer.appendChild(lightMode);
+
 
 function createLightModeBtn() {
-    lightMode.appendChild(lightBtn);
-    lightBtn.textContent = 'Light mode';
-    lightBtn.addEventListener('click', changeLight);
+    if (root.style.colorScheme === 'light') {
+        document.body.setAttribute('class', 'light');
+        return
+    }
+    document.body.setAttribute('class', 'dark');
+    lightMode.addEventListener('click', changeLight);
 }
 
 
 function changeLight() {
     if (root.style.colorScheme === 'light') {
+        document.body.setAttribute('class', 'dark');
         root.style.colorScheme = 'dark';
         return
     }
+    document.body.setAttribute('class', 'light');
     root.style.colorScheme = 'light';
 }
