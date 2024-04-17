@@ -1,4 +1,5 @@
-import { tasks } from ".";
+import { setPage, updatePage } from ".";
+
 export {finishedTasksPage};
 
 const projectsSide = document.querySelector('.projectsSide');
@@ -10,5 +11,9 @@ const finishedProjects = document.createElement('div');
 finishedProjects.setAttribute('class', 'finishedProjects');
 
 function finishedTasksPage() {
-  
+    if (createTask.getAttribute('class') !== 'createTask hidden') {
+        createTask.setAttribute('class', 'createTask hidden');
+    }
+    setPage('finished');
+    updatePage();
 }

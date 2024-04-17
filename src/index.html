@@ -18,11 +18,11 @@
             <div class="doneContainer">Finished tasks</div>
         </div>
         <div class="projectsSide">
+            <div class="projects"></div>
             <div class="createTask">
                 <img src="" alt="add button icon" class="addIcon">
                 <button class="taskBtn">Add task</button>
             </div>
-            <div class="projects"></div>
             <dialog>
                 <fieldset>
                     <legend>New task</legend>
@@ -35,12 +35,12 @@
                         </p>
                         <p>
                             <label for="priority">Priority:</label>
+                            <input type="radio" id="low" name="priority" value="low" class="priority" checked>
                             <label for="low">Low</label>
-                            <input type="radio" id="low" name="priority" value="low">
+                            <input type="radio" id="medium" name="priority" value="medium" class="priority">
                             <label for="medium">Medium</label>
-                            <input type="radio" id="medium" name="priority" value="medium">
+                            <input type="radio" id="high" name="priority" value="high" class="priority">
                             <label for="high">High</label>
-                            <input type="radio" id="high" name="priority" value="high">
                         </p>
                         <label for="dueDate">Date due</label>
                         <input type="date" id="date">

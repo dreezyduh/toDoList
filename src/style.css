@@ -70,16 +70,6 @@ body {
     .task img {
         filter: var(--light-addIcon)
     }
-
-    dialog {
-        input {
-            background-color: var(--light-highlight);
-        }
-
-        input[type='radio'] {
-            accent-color: var(--light-highlight);
-        }
-    }
 }
 
 body {
@@ -89,12 +79,12 @@ body {
 .container {
     display: grid;
     height: 100vh;
-    grid-template-columns: minmax(max-content, 15vw) 85vw;
+    grid-template-columns: minmax(max-content, 15vw) minmax(max-content, 85vw);
 }
 
 dialog {
     color: light-dark(white, white);
-    background-color: light-dark(#280003, black);
+    background-color: light-dark(#848586, black);
     margin: 0;
     position: inherit;
 }
@@ -131,6 +121,17 @@ dialog {
     }
 }
 
+.createTask.hidden {
+    display: none;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 .taskBtn {
     border: none;
     background: none;
@@ -138,19 +139,33 @@ dialog {
 }
 
 .task {
-    width: 60vw;
+    width: 50vw;
+    min-width: min-content;
     display: flex;
     gap: 10px;
     align-items: center;
+    border: 2px solid light-dark(black, white);
+    padding: 5px;
+    border-radius: 10px;
 }
 
-.task > div:nth-child(2) {
-    font-size: 20px;
+.task > div:nth-child(2) div:first-child {
+    font-size: 30px;
     font-weight: 600;
 }
 
-.task > img:last-child {
+.task > div:nth-child(2) div:last-child {
+    font-size: 15px;
+}
+
+.task > div:nth-child(3) {
     margin-left: auto;
+    margin-right: 0;
+    text-wrap: nowrap;
+}
+
+.task > img:last-child {
+    /* margin-left: auto; */
 }
 
 .task > img:first-child:hover {
@@ -159,6 +174,18 @@ dialog {
 
 .task > img:last-child:hover {
     filter: brightness(0) saturate(100%) invert(17%) sepia(63%) saturate(7203%) hue-rotate(359deg) brightness(102%) contrast(125%);
+}
+
+.task.low {
+    background-color: rgba(0, 255, 0, 0.137);
+}
+
+.task.medium {
+    background-color: rgba(255, 255, 0, 0.137);
+}
+
+.task.high {
+    background-color: rgba(255, 0, 0, 0.137);
 }
 
 .checked {
@@ -181,4 +208,16 @@ dialog {
     background: light-dark(black, white);
     content: "";
     width: 95%;
+}
+
+input[type='radio']#low {
+    accent-color: green;
+}
+
+input[type='radio']#medium {
+    accent-color: yellow;
+}
+
+input[type='radio']#high {
+    accent-color: red;
 }
