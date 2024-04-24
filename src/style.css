@@ -46,6 +46,14 @@ body {
     .task img {
         filter: var(--dark-addIcon);
     }
+
+    .subtask img {
+        filter: var(--dark-addIcon);
+    }
+
+    .subTaskImg {
+        filter: var(--dark-addIcon);
+    }
     
 }
 
@@ -68,7 +76,15 @@ body {
     }
 
     .task img {
-        filter: var(--light-addIcon)
+        filter: var(--light-addIcon);
+    }
+
+    .subtask img {
+        filter: var(--light-addIcon);
+    }
+
+    .subTaskImg {
+        filter: var(--light-addIcon);
     }
 }
 
@@ -77,6 +93,7 @@ body {
 }
 
 .container {
+    position:relative;
     display: grid;
     height: 100vh;
     grid-template-columns: minmax(max-content, 15vw) minmax(max-content, 85vw);
@@ -121,7 +138,11 @@ dialog {
     }
 }
 
-.createTask.hidden {
+.hidden {
+    display: none;
+}
+
+.subTaskAddContainer.hidden {
     display: none;
 }
 
@@ -149,6 +170,10 @@ dialog {
     border-radius: 10px;
 }
 
+.task:hover {
+    cursor: pointer;
+}
+
 .task > div:nth-child(2) div:first-child {
     font-size: 30px;
     font-weight: 600;
@@ -162,10 +187,6 @@ dialog {
     margin-left: auto;
     margin-right: 0;
     text-wrap: nowrap;
-}
-
-.task > img:last-child {
-    /* margin-left: auto; */
 }
 
 .task > img:first-child:hover {
@@ -187,6 +208,7 @@ dialog {
 .task.high {
     background-color: rgba(255, 0, 0, 0.137);
 }
+
 
 .checked {
     position: relative;
@@ -210,14 +232,112 @@ dialog {
     width: 95%;
 }
 
-input[type='radio']#low {
+input[type='radio']#low,
+input[type='radio']#low\ edit {
     accent-color: green;
 }
 
-input[type='radio']#medium {
+input[type='radio']#medium,
+input[type='radio']#medium\ edit {
     accent-color: yellow;
 }
 
-input[type='radio']#high {
+input[type='radio']#high,
+input[type='radio']#high\ edit {
     accent-color: red;
+}
+
+.taskBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.editSheet {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    min-width: max-content;
+    height: 80vh;
+    background-color: light-dark(var(--light-bg-list), var(--dark-bg-list));
+    border-radius: 10px;
+    padding: 30px;
+    gap: 10px;
+}
+
+.editSheet > div:first-child {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        background: none;
+        border: none;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input:first-child {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    input:last-child {
+        border-top: 2px solid black;
+        font-size: 15px;
+    }
+
+}
+
+.editSheet > input:last-child {
+    width: max-content;
+}
+
+.editSheet form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.editSheet > dialog button {
+    margin-left: auto;
+}
+
+.subTaskAddContainer {
+    display: flex;
+    align-items: center;
+    width: max-content;
+}
+
+.subTaskImg {
+    width: max-content;
+    content: url('./images/plus.svg');
+}
+
+.subTaskContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subtask {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    border: 2px solid light-dark(black, white);
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+}
+
+.subtask > img:last-child:hover {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(63%) saturate(7203%) hue-rotate(359deg) brightness(102%) contrast(125%);
 }
